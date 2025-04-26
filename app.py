@@ -1,7 +1,17 @@
-from flask import Flask, render_template, request
-import os
+
+from flask import Flask, render_template, request, send_from_directory
 
 app = Flask(__name__)
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    # ton code ici
+    return render_template('index.html')
+
+# Pour servir les fichiers dans /static
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
 
 def nettoyer_code(code_saisi):
     code = code_saisi.strip().upper()
