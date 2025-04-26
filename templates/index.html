@@ -1,29 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>Chatbot - Code Recherche</title>
-	<meta name="generator" content="LibreOffice 25.2.2.2 (Windows)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="2025-04-26T22:12:15.807469200"/>
-	<meta name="" content=""/>
-	<meta name="created" content="00:00:00">
+    <meta charset="UTF-8">
+    <title>Chatbot - Code Recherche</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+        }
+        img {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 300px;
+            height: 40px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        button {
+            height: 45px;
+            font-size: 18px;
+            background-color: #c9211e;
+            color: white;
+            border: none;
+            padding: 0 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #a51b17;
+        }
+        .response {
+            margin-top: 30px;
+            font-size: 20px;
+            color: green;
+        }
+    </style>
 </head>
-<body lang="fr-FR" dir="ltr"><h1><img src="../static/logo-ferrand.png" name="Image1" alt="Logo Ferrand" align="bottom" width="403" height="123" border="0"/>
 
-</h1>
-<h1><font color="#c9211e">Bienvenue sur notre Chatbot</font></h1>
-<p>      <b>TAPEZ VOTRE CODE POUR AVOIR UN PRIX</b></p>
-<form action="//." method="post">
-	<p>Entrez votre code : <input type="text" name="code"  size="20" style="width: 4.39cm; height: 0.66cm"></input>
-	Envoyer 
-	</p>
-</form>
-<p>{% if reponse %} 
-</p>
-<h2>Résultat :</h2>
-<p>{{ reponse|safe }}</p>
-<p>{% endif %} 
-</p>
+<body>
+    <img src="../static/logo-ferrand.png" alt="Logo Ferrand">
+
+    <h1 style="color: #c9211e;">Bienvenue sur notre Chatbot</h1>
+    <p><strong>TAPEZ VOTRE CODE POUR AVOIR UN PRIX</strong></p>
+
+    <form action="/" method="post">
+        <input type="text" name="code" placeholder="Entrez votre code" required>
+        <button type="submit">Envoyer</button>
+    </form>
+
+    {% if reponse %}
+    <div class="response">
+        <h2>Résultat :</h2>
+        <p>{{ reponse|safe }}</p>
+    </div>
+    {% endif %}
 </body>
 </html>
