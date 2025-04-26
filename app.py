@@ -1,12 +1,6 @@
-
 from flask import Flask, render_template, request, send_from_directory
 
 app = Flask(__name__)
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    # ton code ici
-    return render_template('index.html')
 
 # Pour servir les fichiers dans /static
 @app.route('/static/<path:path>')
@@ -41,11 +35,11 @@ def generer_reponse(code_saisi):
     code_nettoye = nettoyer_code(code_saisi)
     prix, delai = rechercher_code(code_nettoye)
     if prix is None:
-        return f"Code : {code_nettoye}\nRésultat : Aucun résultat trouvé."
+        return f"Code : {code_nettoye}<br>Résultat : Aucun résultat trouvé."
     elif prix == "":
-        return f"Code : {code_nettoye}\nPrix : nous consulter\nDélai : {delai}"
+        return f"Code : {code_nettoye}<br>Prix : nous consulter<br>Délai : {delai}"
     else:
-        return f"Code : {code_nettoye}\nPrix : {prix}\nDélai : {delai}"
+        return f"Code : {code_nettoye}<br>Prix : {prix}<br>Délai : {delai}"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
