@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot - Code Recherche</title>
+</head>
+<body>
+    <h1>Bienvenue sur votre Chatbot</h1>
+
+    <form method="post">
+        <label for="code">Entrez votre code :</label>
+        <input type="text" id="code" name="code" required>
+        <button type="submit">Envoyer</button>
+    </form>
+
+    {% if reponse %}
+    <div style="margin-top:20px;">
+        <h2>Résultat :</h2>
+        <p>{{ reponse|safe }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
