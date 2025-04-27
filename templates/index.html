@@ -1,42 +1,36 @@
 <!DOCTYPE html>
-<html lang="fr-FR">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Chatbot - Code Recherche</title>
-  <style>
-    h1, h2, p {
-      text-align: center;
-      font-family: Arial, sans-serif;
-    }
-    img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  </style>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Chatbot - Code Recherche</title>
+	<meta name="generator" content="LibreOffice 25.2.2.2 (Windows)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2025-04-27T07:16:59.424342300"/>
+	<meta name="" content=""/>
+	<style type="text/css">
+		h1 { font-family: "Arial", sans-serif; text-align: center }
+		p { font-family: "Arial", sans-serif; text-align: center }
+		h2 { font-family: "Arial", sans-serif; text-align: center }
+	</style>
 </head>
-<body>
+<body lang="fr-FR" dir="ltr"><p><img src="../static/logo-ferrand.png" name="Image1" alt="Logo Ferrand" align="bottom" width="170" height="52" border="0"/>
 
-  <p>
-    <img src="../static/logo-ferrand.png" alt="Logo Ferrand" width="170" height="52" />
-  </p>
-
-  <h1 style="color: #c9211e;">Bonjour à vous</h1>
-  <p><strong>TAPEZ VOTRE CODE POUR AVOIR UN PRIX</strong></p>
-
-  <form action="/" method="post">
-    <p>
-      <input type="text" name="code" size="15" style="width: 3.29cm; height: 0.66cm">
-    </p>
-    <p>
-      <input type="submit" value="Envoyer" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
-    </p>
-  </form>
-
-  {% if reponse %}
-    <h2 style="color: #008000;">Résultat :</h2>
-    <p style="color: #008000;">{{ reponse|safe }}</p>
-  {% endif %}
-
+</p>
+<h1><font color="#c9211e"><font size="5" style="font-size: 20pt">Bonjour
+à vous</font></font></h1>
+<p><strong><font size="2" style="font-size: 10pt">TAPEZ VOTRE CODE
+POUR AVOIR UN PRIX</font></strong></p>
+<form action="//./" method="post">
+	<p><input type="text" name="code"  size="15" style="width: 3.29cm; height: 0.66cm"></input>
+		</p>
+	<p><input type="submit" value="Envoyer"  style="width: 2.09cm; height: 1.03cm; background: #007bff; color: #ffffff"></input>
+		</p>
+</form>
+<p>{% if reponse %} 
+</p>
+<h2><font color="#008000">Résultat :</font></h2>
+<p><font color="#008000">{{ reponse|safe }}</font></p>
+<p>{% endif %} 
+</p>
 </body>
 </html>
