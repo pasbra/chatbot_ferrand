@@ -1,31 +1,32 @@
+{% if reponse %}
 <script>
-    const loader = document.getElementById("loader");
-    const typedText = document.getElementById("typed-text");
-    let fullText = `{{ reponse|safe }}`; // ICI Correction !
+    document.addEventListener("DOMContentLoaded", function() {
+        const loader = document.getElementById("loader");
+        const typedText = document.getElementById("typed-text");
+        let fullText = `{{ reponse|safe }}`;
 
-    let index = 0;
-    let speed = 50; // vitesse d'écriture
+        let index = 0;
+        let speed = 50;
 
-    function startTyping() {
-      if (index < fullText.length) {
-        if (fullText.substring(index, index + 4) === "<br>") {
-          typedText.innerHTML += "<br>";
-          index += 4;
-        } else {
-          typedText.innerHTML += fullText.charAt(index);
-          index++;
+        function startTyping() {
+            if (index < fullText.length) {
+                if (fullText.substring(index, index + 4) === "<br>") {
+                    typedText.innerHTML += "<br>";
+                    index += 4;
+                } else {
+                    typedText.innerHTML += fullText.charAt(index);
+                    index++;
+                }
+                setTimeout(startTyping, speed);
+            }
         }
-        setTimeout(startTyping, speed);
-      }
-    }
 
-    // Au chargement du résultat
-    window.onload = function() {
-      loader.style.display = "block"; // afficher le loader
+        loader.style.display = "block";
 
-      setTimeout(() => {
-        loader.style.display = "none"; // cacher le loader
-        startTyping(); // démarrer écriture
-      }, 2000); // temps d'attente avant affichage
-    }
+        setTimeout(() => {
+            loader.style.display = "none";
+            startTyping();
+        }, 2000);
+    });
 </script>
+{% endif %}
