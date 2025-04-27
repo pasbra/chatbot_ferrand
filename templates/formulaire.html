@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  <title>Demande de Devis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    .form-container {
+      background-color: white;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #c9211e;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+      font-size: 16px;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Demande de Devis</h2>
+    <form action="mailto:pascal.braccolino@ferrand.eu" method="post" enctype="text/plain">
+      <label for="nom">Nom :</label>
+      <input type="text" id="nom" name="Nom" required>
+
+      <label for="email">Email :</label>
+      <input type="email" id="email" name="Email" required>
+
+      <label for="tel">Téléphone :</label>
+      <input type="tel" id="tel" name="Téléphone">
+
+      <label for="message">Message :</label>
+      <textarea id="message" name="Message" rows="5" required></textarea>
+
+      <input type="submit" value="Envoyer">
+    </form>
+  </div>
+
+</body>
+</html>
