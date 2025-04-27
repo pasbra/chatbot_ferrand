@@ -1,6 +1,87 @@
-{% if reponse %}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot - Code Recherche</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    h1, h2, p {
+      text-align: center;
+    }
+    img {
+      display: block;
+      margin: 0 auto 20px auto;
+    }
+    input[type="text"], input[type="submit"] {
+      width: 250px;
+      padding: 10px;
+      margin: 10px auto;
+      display: block;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    #typed-text {
+      min-height: 100px;
+      font-size: 18px;
+      color: #008000;
+      white-space: pre-wrap;
+    }
+    #loader {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #3498db;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+      display: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <p>
+    <img src="../static/logo-ferrand.png" alt="Logo Ferrand" width="170" height="52" />
+  </p>
+
+  <h1 style="color: #c9211e;">Bonjour à vous</h1>
+  <p><strong>Tapez votre code pour avoir un prix</strong></p>
+
+  <form action="/" method="post">
+    <input type="text" name="code" required placeholder="Entrez votre code">
+    <input type="submit" value="Envoyer">
+  </form>
+
+  {% if reponse %}
+    <h2 style="color: #008000;">Résultat :</h2>
+
+    <!-- Loader Animation -->
+    <div id="loader"></div>
+
+    <!-- Texte tapé -->
+    <p id="typed-text"></p>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
         const loader = document.getElementById("loader");
         const typedText = document.getElementById("typed-text");
         let fullText = `{{ reponse|safe }}`;
@@ -9,24 +90,27 @@
         let speed = 50;
 
         function startTyping() {
-            if (index < fullText.length) {
-                if (fullText.substring(index, index + 4) === "<br>") {
-                    typedText.innerHTML += "<br>";
-                    index += 4;
-                } else {
-                    typedText.innerHTML += fullText.charAt(index);
-                    index++;
-                }
-                setTimeout(startTyping, speed);
+          if (index < fullText.length) {
+            if (fullText.substring(index, index + 4) === "<br>") {
+              typedText.innerHTML += "<br>";
+              index += 4;
+            } else {
+              typedText.innerHTML += fullText.charAt(index);
+              index++;
             }
+            setTimeout(startTyping, speed);
+          }
         }
 
         loader.style.display = "block";
 
         setTimeout(() => {
-            loader.style.display = "none";
-            startTyping();
+          loader.style.display = "none";
+          startTyping();
         }, 2000);
-    });
-</script>
-{% endif %}
+      });
+    </script>
+  {% endif %}
+
+</body>
+</html>
