@@ -26,6 +26,10 @@ def nettoyer_code(code_saisi):
             elif position_tiret + 1 < len(derniers_3) and derniers_3[position_tiret + 1] in 'ABCDEFGHI':
                 code = code[:-3] + derniers_3[:position_tiret] + derniers_3[position_tiret + 2:]
 
+    # Cas 3 : Si le dernier caractère est une lettre A-I → on l'enlève
+    if code and code[-1] in 'ABCDEFGHI':
+        code = code[:-1]
+
     return code
 
 # Fonction pour rechercher un code dans code.txt
@@ -43,7 +47,7 @@ def rechercher_code(code_nettoye, fichier_table="code.txt"):
     except FileNotFoundError:
         return None, None
 
-# Générer la réponse
+# Fonction pour générer la réponse
 def generer_reponse(code_saisi):
     code_nettoye = nettoyer_code(code_saisi)
     prix, delai = rechercher_code(code_nettoye)
@@ -54,7 +58,7 @@ def generer_reponse(code_saisi):
     else:
         return f"Code : {code_nettoye}<br>Prix : {prix}<br>Délai : {delai}"
 
-# Page principale du site
+# Route principale
 @app.route('/', methods=['GET', 'POST'])
 def index():
     reponse = None
@@ -64,6 +68,6 @@ def index():
             reponse = generer_reponse(code_saisi)
     return render_template('index.html', reponse=reponse)
 
-# Lancement local
+# Lancement du serveur local
 if __name__ == "__main__":
     app.run(debug=True)
