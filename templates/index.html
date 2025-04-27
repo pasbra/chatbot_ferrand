@@ -1,40 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr-FR">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>Chatbot - Code Recherche</title>
-	<meta name="generator" content="LibreOffice 25.2.2.2 (Windows)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="2025-04-27T07:08:27.459847500"/>
-	<meta name="" content=""/>
-	<style type="text/css">
-		h1 { margin-left: 1.06cm; text-align: center; margin-right: 1.06cm }
-		h1.cjk { font-family: "Arial", sans-serif }
-		h1.ctl { font-family: "Arial", sans-serif }
-		p { font-family: "Arial", sans-serif; text-align: center; margin-left: 1.06cm; margin-right: 1.06cm }
-		h2 { margin-left: 1.06cm; text-align: center; margin-right: 1.06cm }
-	</style>
+  <meta charset="UTF-8">
+  <title>Chatbot - Code Recherche</title>
+  <style>
+    h1, h2, p {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
 </head>
-<body lang="fr-FR" dir="ltr"><p><img src="../static/logo-ferrand.png" name="Image1" alt="Logo Ferrand" align="bottom" width="170" height="52" border="0"/>
+<body>
 
-</p>
-<h1 class="western" style="margin-right: 0cm; margin-left: 0cm"><font color="#c9211e">Bonjour&nbsp;à
-vous</font></h1>
-<p><strong>TAPEZ VOTRE CODE POUR AVOIR UN PRIX</strong></p>
-<form action="//./" method="post">
-	<p><input type="text" name="code"  size="15" style="width: 3.29cm; height: 0.66cm"></input>
-		</p>
-</form>
-<p>Envoyer 
-</p>
-<p>{% if reponse %} 
-</p>
-<h2 style="margin-right: 0cm; margin-left: 0cm; margin-top: 0.79cm; margin-bottom: 0.5cm">
-<font color="#008000"><font size="4" style="font-size: 15pt">Résultat
-:</font></font></h2>
-<p style="margin-top: 0.79cm"><font color="#008000"><font size="4" style="font-size: 15pt">{{
-reponse|safe }}</font></font></p>
-<p>{% endif %} 
-</p>
+  <p>
+    <img src="../static/logo-ferrand.png" alt="Logo Ferrand" width="170" height="52" />
+  </p>
+
+  <h1 style="color: #c9211e;">Bonjour à vous</h1>
+  <p><strong>TAPEZ VOTRE CODE POUR AVOIR UN PRIX</strong></p>
+
+  <form action="/" method="post">
+    <p>
+      <input type="text" name="code" size="15" style="width: 3.29cm; height: 0.66cm">
+    </p>
+    <p>
+      <input type="submit" value="Envoyer" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    </p>
+  </form>
+
+  {% if reponse %}
+    <h2 style="color: #008000;">Résultat :</h2>
+    <p style="color: #008000;">{{ reponse|safe }}</p>
+  {% endif %}
+
 </body>
 </html>
