@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="fr-FR">
 <head>
   <meta charset="UTF-8">
@@ -50,8 +50,30 @@
     .devis-button:hover {
       background-color: #218838;
     }
+    #typed-text {
+      min-height: 100px;
+      font-size: 18px;
+      color: #008000;
+      white-space: pre-wrap;
+    }
+    /* Animation du loader */
+    #loader {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #3498db;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+      display: none; /* caché au début */
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
+
 <body>
 
   <p>
@@ -66,20 +88,56 @@
     <input type="submit" value="Envoyer">
   </form>
 
-
-    <!-- Bouton Demander un devis -->
 {% if reponse %}
   <h2 style="color: #008000;">Résultat :</h2>
-  <p style="color: #008000;">{{ reponse|safe }}</p>
 
-  <!-- Ton bouton DEMANDER UN DEVIS -->
+  <!-- Loader Animation -->
+  <div id="loader"></div>
+
+  <!-- Texte qui va s'écrire -->
+  <p id="typed-text"></p>
+
   <p>
-    <a href="../formulaire.html">
+    <a href="../formulaire">
       <button type="button" style="padding: 10px 20px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">
         Demandez un devis
       </button>
     </a>
   </p>
+
+  <script>
+    const loader = document.getElementById("loader");
+    const typedText = document.getElementById("typed-text");
+    let fullText = `Code : 890<br>Prix : 0,66 €<br>Délai : nous consulter`;
+
+    let index = 0;
+    let speed = 50; // vitesse d'écriture
+
+    function startTyping() {
+      if (index < fullText.length) {
+        if (fullText.substring(index, index + 4) === "<br>") {
+          typedText.innerHTML += "<br>";
+          index += 4;
+        } else {
+          typedText.innerHTML += fullText.charAt(index);
+          index++;
+        }
+        setTimeout(startTyping, speed);
+      }
+    }
+
+    // Au chargement du résultat
+    window.onload = function() {
+      loader.style.display = "block"; // afficher le loader
+
+      setTimeout(() => {
+        loader.style.display = "none"; // cacher le loader
+        startTyping(); // démarrer écriture
+      }, 2000); // temps d'attente avant affichage
+    }
+  </script>
+
 {% endif %}
+
 </body>
 </html>
