@@ -34,24 +34,30 @@
     input[type="submit"]:hover {
       background-color: #0056b3;
     }
-    .devis-button {
-      display: block;
-      margin: 20px auto;
-      padding: 12px 25px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
+    #typed-text {
+      min-height: 100px;
+      font-size: 18px;
+      color: #008000;
+      white-space: pre-wrap;
     }
-    .devis-button:hover {
-      background-color: #218838;
+    /* Loader cercle bleu */
+    #loader {
+      border: 8px solid #f3f3f3; /* bord gris clair */
+      border-top: 8px solid #3498db; /* bord bleu vif */
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+      display: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
+
 <body>
 
   <p>
@@ -66,20 +72,46 @@
     <input type="submit" value="Envoyer">
   </form>
 
+  {% if reponse %}
+    <h2 style="color: #008000;">Résultat :</h2>
 
-    <!-- Bouton Demander un devis -->
-{% if reponse %}
-  <h2 style="color: #008000;">Résultat :</h2>
-  <p style="color: #008000;">{{ reponse|safe }}</p>
+    <!-- Loader Animation -->
+    <div id="loader"></div>
 
-  <!-- Ton bouton DEMANDER UN DEVIS -->
-  <p>
-    <a href="../formulaire">
-      <button type="button" style="padding: 10px 20px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">
-        Demandez un devis
-      </button>
-    </a>
-  </p>
-{% endif %}
+    <!-- Texte qui va être écrit -->
+    <p id="typed-text"></p>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const loader = document.getElementById("loader");
+        const typedText = document.getElementById("typed-text");
+        let fullText = `{{ reponse|safe }}`;
+
+        let index = 0;
+        let speed = 50; // vitesse d'écriture
+
+        function startTyping() {
+          if (index < fullText.length) {
+            if (fullText.substring(index, index + 4) === "<br>") {
+              typedText.innerHTML += "<br>";
+              index += 4;
+            } else {
+              typedText.innerHTML += fullText.charAt(index);
+              index++;
+            }
+            setTimeout(startTyping, speed);
+          }
+        }
+
+        loader.style.display = "block"; // afficher le loader
+
+        setTimeout(() => {
+          loader.style.display = "none"; // cacher le loader
+          startTyping(); // démarrer l'écriture
+        }, 2000); // 2 secondes d'attente
+      });
+    </script>
+  {% endif %}
+
 </body>
 </html>
