@@ -34,29 +34,24 @@
     input[type="submit"]:hover {
       background-color: #0056b3;
     }
-    #typed-text {
-      min-height: 100px;
-      font-size: 18px;
-      color: #008000;
-      white-space: pre-wrap;
-    }
-    #loader {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #3498db;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
+    .devis-button {
+      display: block;
       margin: 20px auto;
-      display: none;
+      padding: 12px 25px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .devis-button:hover {
+      background-color: #218838;
     }
   </style>
 </head>
-
 <body>
 
   <p>
@@ -71,46 +66,20 @@
     <input type="submit" value="Envoyer">
   </form>
 
-  {% if reponse %}
-    <h2 style="color: #008000;">Résultat :</h2>
 
-    <!-- Loader Animation -->
-    <div id="loader"></div>
+    <!-- Bouton Demander un devis -->
+{% if reponse %}
+  <h2 style="color: #008000;">Résultat :</h2>
+  <p style="color: #008000;">{{ reponse|safe }}</p>
 
-    <!-- Texte tapé -->
-    <p id="typed-text"></p>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const loader = document.getElementById("loader");
-        const typedText = document.getElementById("typed-text");
-        let fullText = `{{ reponse|safe }}`;
-
-        let index = 0;
-        let speed = 50;
-
-        function startTyping() {
-          if (index < fullText.length) {
-            if (fullText.substring(index, index + 4) === "<br>") {
-              typedText.innerHTML += "<br>";
-              index += 4;
-            } else {
-              typedText.innerHTML += fullText.charAt(index);
-              index++;
-            }
-            setTimeout(startTyping, speed);
-          }
-        }
-
-        loader.style.display = "block";
-
-        setTimeout(() => {
-          loader.style.display = "none";
-          startTyping();
-        }, 2000);
-      });
-    </script>
-  {% endif %}
-
+  <!-- Ton bouton DEMANDER UN DEVIS -->
+  <p>
+    <a href="../formulaire">
+      <button type="button" style="padding: 10px 20px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Demandez un devis
+      </button>
+    </a>
+  </p>
+{% endif %}
 </body>
 </html>
