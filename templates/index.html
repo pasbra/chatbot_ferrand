@@ -1,114 +1,7 @@
-<!DOCTYPE html> 
-<html lang="fr-FR">
-<head>
-  <meta charset="UTF-8">
-  <title>Chatbot - Code Recherche</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      padding: 20px;
-    }
-    h1, h2, p {
-      text-align: center;
-    }
-    img {
-      display: block;
-      margin: 0 auto 20px auto;
-    }
-    input[type="text"], input[type="submit"] {
-      width: 250px;
-      padding: 10px;
-      margin: 10px auto;
-      display: block;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-    input[type="submit"] {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    input[type="submit"]:hover {
-      background-color: #0056b3;
-    }
-    .devis-button {
-      display: block;
-      margin: 20px auto;
-      padding: 12px 25px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .devis-button:hover {
-      background-color: #218838;
-    }
-    #typed-text {
-      min-height: 100px;
-      font-size: 18px;
-      color: #008000;
-      white-space: pre-wrap;
-    }
-    /* Animation du loader */
-    #loader {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #3498db;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
-      display: none; /* caché au début */
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
-</head>
-
-<body>
-
-  <p>
-    <img src="../static/logo-ferrand.png" alt="Logo Ferrand" width="170" height="52" />
-  </p>
-
-  <h1 style="color: #c9211e;">Bonjour à vous</h1>
-  <p><strong>Tapez votre code pour avoir un prix</strong></p>
-
-  <form action="/" method="post">
-    <input type="text" name="code" required placeholder="Entrez votre code">
-    <input type="submit" value="Envoyer">
-  </form>
-
-{% if reponse %}
-  <h2 style="color: #008000;">Résultat :</h2>
-
-  <!-- Loader Animation -->
-  <div id="loader"></div>
-
-  <!-- Texte qui va s'écrire -->
-  <p id="typed-text"></p>
-
-  <p>
-    <a href="../formulaire">
-      <button type="button" style="padding: 10px 20px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">
-        Demandez un devis
-      </button>
-    </a>
-  </p>
-
-  <script>
+<script>
     const loader = document.getElementById("loader");
     const typedText = document.getElementById("typed-text");
-    let fullText = `Code : 890<br>Prix : 0,66 €<br>Délai : nous consulter`;
+    let fullText = `{{ reponse|safe }}`; // ICI Correction !
 
     let index = 0;
     let speed = 50; // vitesse d'écriture
@@ -135,9 +28,4 @@
         startTyping(); // démarrer écriture
       }, 2000); // temps d'attente avant affichage
     }
-  </script>
-
-{% endif %}
-
-</body>
-</html>
+</script>
