@@ -55,17 +55,14 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-  .Style1 {
-	font-size: 12px;
-	font-weight: bold;
-}
   </style>
 </head>
 
 <body>
 
   <p>
-    <img src="../static/logo-ferrand.png" alt="Logo Ferrand" width="170" height="52" />  </p>
+    <img src="../static/logo-ferrand.png" alt="Logo Ferrand" width="170" height="52" />
+  </p>
 
   <h1 style="color: #c9211e;">Bonjour à vous</h1>
   <p><strong>Tapez votre code pour avoir un prix</strong></p>
@@ -76,15 +73,14 @@
   </form>
 
   {% if reponse %}
-    <h2 style="color: #008000;">Résultat :
-      <!-- Loader Animation -->
-    </h2>
+    <h2 style="color: #008000;">Résultat :</h2>
+
+    <!-- Loader Animation -->
     <div id="loader"></div>
 
     <!-- Texte qui va être écrit -->
     <p id="typed-text"></p>
 
-    <p align="left">
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         const loader = document.getElementById("loader");
@@ -115,7 +111,7 @@
         }, 2000); // 2 secondes d'attente
       });
     </script>
-  {% endif %}</p>
-    <p class="Style1">*NB: Les prix correspondent au prix catalogue avant toute remise eventuelle </p>
+  {% endif %}
+
 </body>
 </html>
