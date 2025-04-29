@@ -28033,14 +28033,12 @@ SP049000;   ;nous consulter
 SP049100; 89,74 € ;nous consulter
 SP049200X;   ;nous consulter
 SP049200Y;   ;nous consulter
-SP049300X; 54,87 € ;nous consulter
-SP049300Y; 54,87 € ;nous consulter
+SP049300X; 54,87 € ;8 jours
+SP049300Y; 54,87 € ;8 jours
 SP049400X; 47,29 € ;nous consulter
 SP049400Y; 47,29 € ;nous consulter
-SP049500X; 41,61 € ;nous consulter
-SP049500X-PROTO19; 47,89 € ;nous consulter
-SP049500Y; 41,61 € ;nous consulter
-SP049500Y-PROTO19; 47,89 € ;nous consulter
+SP049500X; 41,61 € ;8 jours
+SP049500Y; 41,61 € ;8 jours
 SP050300; 113,93 € ;nous consulter
 SP050400;   ;nous consulter
 SP050500; 31,62 € ;nous consulter
