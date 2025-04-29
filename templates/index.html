@@ -34,16 +34,32 @@
     input[type="submit"]:hover {
       background-color: #0056b3;
     }
+
+    .btn-secondaire {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin: 20px auto;
+      text-align: center;
+    }
+    .btn-secondaire:hover {
+      background-color: #0056b3;
+    }
+
     #typed-text {
       min-height: 100px;
       font-size: 18px;
       color: #008000;
       white-space: pre-wrap;
     }
-    /* Loader cercle bleu */
+
     #loader {
-      border: 8px solid #f3f3f3; /* bord gris clair */
-      border-top: 8px solid #3498db; /* bord bleu vif */
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
       border-radius: 50%;
       width: 60px;
       height: 60px;
@@ -51,9 +67,15 @@
       margin: 20px auto;
       display: none;
     }
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+
+    .Style1 {
+      font-size: 12px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -74,11 +96,7 @@
 
   {% if reponse %}
     <h2 style="color: #008000;">Résultat :</h2>
-
-    <!-- Loader Animation -->
     <div id="loader"></div>
-
-    <!-- Texte qui va être écrit -->
     <p id="typed-text"></p>
 
     <script>
@@ -88,7 +106,7 @@
         let fullText = `{{ reponse|safe }}`;
 
         let index = 0;
-        let speed = 50; // vitesse d'écriture
+        let speed = 50;
 
         function startTyping() {
           if (index < fullText.length) {
@@ -103,15 +121,24 @@
           }
         }
 
-        loader.style.display = "block"; // afficher le loader
+        loader.style.display = "block";
 
         setTimeout(() => {
-          loader.style.display = "none"; // cacher le loader
-          startTyping(); // démarrer l'écriture
-        }, 2000); // 2 secondes d'attente
+          loader.style.display = "none";
+          startTyping();
+        }, 2000);
       });
     </script>
+
+    <!-- Bouton pour ouvrir la page dans un nouvel onglet -->
+    <div style="text-align: center;">
+      <a class="btn-secondaire" href="https://pieces-ferrand.fr/order.htm" target="_blank">
+        Faire une demande de devis ou commande
+      </a>
+    </div>
   {% endif %}
+
+  <p class="Style1">*NB: Les prix correspondent au prix catalogue avant toute remise éventuelle</p>
 
 </body>
 </html>
