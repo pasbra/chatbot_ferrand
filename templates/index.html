@@ -77,7 +77,6 @@
       font-size: 12px;
       font-weight: bold;
     }
-  .Style3 {font-size: 12px; font-weight: bold; color: #000000; }
   </style>
 </head>
 
@@ -89,7 +88,7 @@
 
   <h1 style="color: #c9211e;">Bonjour à vous</h1>
   <p><strong>Tapez votre code pour avoir un prix</strong></p>
-  <p><span class="Style3">*NB: Les prix correspondent au prix catalogue avant toute remise éventuelle</span></p>
+
   <form action="/" method="post">
     <input type="text" name="code" required placeholder="Entrez votre code">
     <input type="submit" value="Envoyer">
@@ -97,8 +96,10 @@
 
   {% if reponse %}
     <h2 style="color: #008000;">Résultat :</h2>
-    <div id="loader">
-      <script>
+    <div id="loader"></div>
+    <p id="typed-text"></p>
+
+    <script>
       document.addEventListener("DOMContentLoaded", function() {
         const loader = document.getElementById("loader");
         const typedText = document.getElementById("typed-text");
@@ -127,15 +128,17 @@
           startTyping();
         }, 2000);
       });
-      </script>
+    </script>
 
-      <!-- Bouton pour ouvrir la page dans un nouvel onglet -->
-    </div>
+    <!-- Bouton pour ouvrir la page dans un nouvel onglet -->
     <div style="text-align: center;">
       <a class="btn-secondaire" href="https://pieces-ferrand.fr/order.htm" target="_blank">
-        Faire une demande de devis ou commande      </a></div>
-    <p>{% endif %}  </p>
-    <p class="Style1">&nbsp;</p>
+        Faire une demande de devis ou commande
+      </a>
+    </div>
+  {% endif %}
+
+  <p class="Style1">*NB: Les prix correspondent au prix catalogue avant toute remise éventuelle</p>
 
 </body>
 </html>
