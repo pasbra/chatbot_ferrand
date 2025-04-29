@@ -8,14 +8,18 @@
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
       padding: 20px;
-    }
-    h1, h2, p {
       text-align: center;
     }
+
     img {
       display: block;
-      margin: 0 auto 20px auto;
+      margin: 0 auto 20px;
     }
+
+    h1 {
+      color: #c9211e;
+    }
+
     input[type="text"], input[type="submit"] {
       width: 250px;
       padding: 10px;
@@ -25,27 +29,29 @@
       border: 1px solid #ccc;
       font-size: 16px;
     }
+
     input[type="submit"] {
       background-color: #007bff;
       color: white;
       border: none;
       cursor: pointer;
     }
+
     input[type="submit"]:hover {
       background-color: #0056b3;
     }
 
     .btn-secondaire {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 12px 25px;
       background-color: #007bff;
       color: white;
       text-decoration: none;
       border-radius: 5px;
       font-weight: bold;
-      margin: 20px auto;
-      text-align: center;
+      margin: 30px auto 10px;
     }
+
     .btn-secondaire:hover {
       background-color: #0056b3;
     }
@@ -73,27 +79,31 @@
       100% { transform: rotate(360deg); }
     }
 
-    .Style1 {
+    .note {
       font-size: 12px;
       font-weight: bold;
+      margin-top: 10px;
+      color: #333;
     }
   </style>
 </head>
 
 <body>
 
-  <p>
-    <img src="../static/logo-ferrand.png" alt="Logo Ferrand" width="170" height="52" />
-  </p>
+  <!-- Logo -->
+  <img src="../static/logo-ferrand.png" alt="Logo Ferrand" width="170" height="52" />
 
-  <h1 style="color: #c9211e;">Bonjour à vous</h1>
+  <!-- Titre -->
+  <h1>Bonjour à vous</h1>
   <p><strong>Tapez votre code pour avoir un prix</strong></p>
 
+  <!-- Formulaire -->
   <form action="/" method="post">
     <input type="text" name="code" required placeholder="Entrez votre code">
     <input type="submit" value="Envoyer">
   </form>
 
+  <!-- Bloc résultat -->
   {% if reponse %}
     <h2 style="color: #008000;">Résultat :</h2>
     <div id="loader"></div>
@@ -122,23 +132,21 @@
         }
 
         loader.style.display = "block";
-
         setTimeout(() => {
           loader.style.display = "none";
           startTyping();
         }, 2000);
       });
     </script>
-
-    <!-- Bouton pour ouvrir la page dans un nouvel onglet -->
-    <div style="text-align: center;">
-      <a class="btn-secondaire" href="https://pieces-ferrand.fr/order.htm" target="_blank">
-        Faire une demande de devis ou commande
-      </a>
-    </div>
   {% endif %}
 
-  <p class="Style1">*NB: Les prix correspondent au prix catalogue avant toute remise éventuelle</p>
+  <!-- Bouton de demande -->
+  <a class="btn-secondaire" href="https://pieces-ferrand.fr/order.htm" target="_blank">
+    Faire une demande de devis ou commande
+  </a>
+
+  <!-- Note toujours visible -->
+  <p class="note">*NB: Les prix correspondent au prix catalogue avant toute remise éventuelle</p>
 
 </body>
 </html>
