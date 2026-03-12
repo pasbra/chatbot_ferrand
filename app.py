@@ -35,7 +35,7 @@ def nettoyer_code(code_saisi):
 # Fonction pour rechercher un code dans code.txt
 def rechercher_code(code_nettoye, fichier_table="code.txt"):
     try:
-       with open(fichier_table, 'r', encoding='latin-1') as f:
+       wwith open(fichier_table, 'r', encoding='cp1252') as f:
             lignes = f.readlines()
         for ligne in lignes:
             elements = ligne.strip().split(';')
