@@ -3474,7 +3474,7 @@
 54520100019	20,94	nous consulter
 60203502004	2,82	nous consulter
 5,45E+11	45,64	nous consulter
-code		d?®lai
+code		d?Â®lai
 05/07/2004	5,20	nous consulter
 0.310.5002.00	196,81	nous consulter
 0.310.6010.00	253,92	nous consulter
@@ -4705,7 +4705,7 @@ code		d?®lai
 04.00.237-PULVE		nous consulter
 04.00.238-PULVE		nous consulter
 04.00.239		nous consulter
-04.00.239-PULV?ë	258,15	nous consulter
+04.00.239-PULV?Ã«	258,15	nous consulter
 04.00.244		nous consulter
 04.00.249	26,36	nous consulter
 04.00.252		nous consulter
@@ -13440,7 +13440,7 @@ A8RO*BE*30*62*24*EE	12,82	nous consulter
 A8RO*BE*30*72*19	13,36	nous consulter
 A8RO*BE*30*72*30*EE		nous consulter
 A8RO*BE*40*90*33	138,36	nous consulter
-A8RO*BE*45*100*39?á,7*EE	75,50	nous consulter
+A8RO*BE*45*100*39?Ã¡,7*EE	75,50	nous consulter
 A8RO*BOM*17*40*12*EE	30,67	nous consulter
 A8RO*BS*20*47*18	46,43	nous consulter
 A8RO*BS*35*72*23	26,47	nous consulter
